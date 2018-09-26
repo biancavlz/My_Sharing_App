@@ -11,10 +11,12 @@
 
   <body>
     <%= render 'shared/navbar' if current_user %>
-    <%= yield %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
 
     <%= render 'shared/footer' %>
-
     <% if flash.any? %>
       <script type="text/javascript">
         <% flash.each do | key, value | %>
