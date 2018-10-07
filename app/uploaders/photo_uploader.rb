@@ -1,4 +1,5 @@
 class PhotoUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -28,9 +29,16 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  process convert: 'png'
+  process tags: ['post_picture']
+
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
+  # version :thumbnail do
+  #   resize_to_fill(100, 100)
+  # end
+
+  # version :standard do
+  #   process resize_to_fill: [300,300, :north]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.
